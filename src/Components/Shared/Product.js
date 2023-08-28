@@ -8,19 +8,23 @@ import { titleShortner, isInCart, quantityCount } from "../../Helper/fuctions";
 import { CartContext } from "../../Context/CartContextProvider";
 //Icons
 import trashIcon from "../../assets/icon/trash.svg";
+//Styles:
+import styles from "./Product.module.css";
+
 const Product = ({ productData }) => {
   const { state, dispatch } = useContext(CartContext);
 
   return (
-    <div>
-      <img src={productData.image} alt='product' style={{ width: "100px" }} />
+    <div className={styles.container}>
+      <img src={productData.image} alt='product' className={styles.cardImage} />
       <h3>{titleShortner(productData.title)}</h3>
       <p>{productData.price} $</p>
-      <div>
+      <div className={styles.linkContainer}>
         <Link to={`/products/${productData.id}`}>Details</Link>
-        <div>
+        <div className={styles.buttonContainer}>
           {quantityCount(state, productData.id) === 1 && (
             <button
+              className={styles.smallButton}
               onClick={() =>
                 dispatch({ type: "REMOVE_ITEM", payload: productData })
               }>
@@ -29,6 +33,7 @@ const Product = ({ productData }) => {
           )}
           {quantityCount(state, productData.id) > 1 && (
             <button
+              className={styles.smallButton}
               onClick={() =>
                 dispatch({ type: "DECREASE", payload: productData })
               }>
@@ -37,6 +42,7 @@ const Product = ({ productData }) => {
           )}
           {isInCart(state, productData.id) ? (
             <button
+            className={styles.smallButton}
               onClick={() =>
                 dispatch({ type: "INCREASE", payload: productData })
               }>

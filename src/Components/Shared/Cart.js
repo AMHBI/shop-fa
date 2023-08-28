@@ -5,7 +5,9 @@ import { CartContext } from "../../Context/CartContextProvider";
 //Functions:
 import { titleShortner } from "../../Helper/fuctions";
 //Icons:
-import trashIcon from "../../assets/icon/trash.svg"
+import trashIcon from "../../assets/icon/trash.svg";
+//Styles:
+import styles from "./Cart.module.css";
 
 const Cart = (props) => {
   const { image, title, price, quantity } = props.data;
