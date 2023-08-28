@@ -3,22 +3,22 @@ import React, { useContext } from "react";
 //Contexts:
 import { CartContext } from "../../Context/CartContextProvider";
 //Functions:
-import { titleShortner } from "../../Helper/fuctions";
+import { titleShortner ,priceDivider} from "../../Helper/fuctions";
 //Icons:
 import trashIcon from "../../assets/icon/trash.svg";
 //Styles:
 import styles from "./Cart.module.css";
 
 const Cart = (props) => {
-  const { image, title, price, quantity } = props.data;
+  const { image_link, title, price, quantity } = props.data;
   const { dispatch } = useContext(CartContext);
 
   return (
     <div className={styles.container}>
-      <img className={styles.productImage} src={image} alt='product' />
+      <img className={styles.productImage} src={image_link} alt='product' />
       <div className={styles.data}>
         <h3>{titleShortner(title)}</h3>
-        <p>{price}</p>
+        <p>{priceDivider(price)} تومان</p>
       </div>
       <div>
         <span className={styles.quantity}>{quantity}</span>

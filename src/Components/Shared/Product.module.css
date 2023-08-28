@@ -1,5 +1,6 @@
 .container {
   width: 250px;
+  min-height: 60vh;
   border: 1px solid silver;
   border-radius: 10px;
   overflow: hidden;
@@ -23,14 +24,15 @@
 
 .container h3 {
   color: #404040;
-  text-align: left;
+  text-align: justify;
   margin: 25px 20px 15px;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .container p {
   color: #404040;
-  text-align: left;
+  text-align: right;
   margin: 15px 20px;
   font-size: 0.9rem;
   font-weight: 500;
@@ -56,6 +58,8 @@
   color: #fff;
   height: 30px;
   width: 120px;
+  font-family: "Vazirmatn";
+  font-size: small;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s ease;

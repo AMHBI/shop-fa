@@ -18,7 +18,7 @@ const App = () => {
       <CartContextProvider>
         <Navbar />
         <Switch>
-          <Route path='/products/:id' component={ProductDetails} />
+          <Route path='/products/:product_id' component={ProductDetails} />
           <Route path='/products' component={Store} />
           <Route path="/cart" component={ShopCart}/>
           <Redirect to='/products' />

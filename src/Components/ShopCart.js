@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 //Contexts : 
 import {CartContext} from '../Context/CartContextProvider';
+import {priceDivider} from "../Helper/fuctions";
 //Components :
 import Cart from './Shared/Cart';
 //Styles:
@@ -20,7 +21,7 @@ const ShopCart = () => {
             {
                 state.itemsCounter > 0 && <div className={styles.payments}>
                     <p><span>Total Item:</span> {state.itemsCounter}</p>
-                    <p><span>Total Payments:</span> {state.total}</p>
+                    <p><span>Total Payments:</span> {priceDivider(state.total)}</p>
                     <div className={styles.buttonContainer}>
                         <button className={styles.clear} onClick={()=>dispatch({type:'CHECKOUT'})}>checkout</button>
                         <button className={styles.checkout} onClick={()=>dispatch({type:'CLEAR'})}>Clear</button>

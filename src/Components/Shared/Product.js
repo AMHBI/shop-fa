@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 //Functions :
-import { titleShortner, isInCart, quantityCount } from "../../Helper/fuctions";
+import { titleShortner, isInCart, quantityCount , priceDivider } from "../../Helper/fuctions";
 
 //Contexts:
 import { CartContext } from "../../Context/CartContextProvider";
@@ -16,13 +16,16 @@ const Product = ({ productData }) => {
 
   return (
     <div className={styles.container}>
-      <img src={productData.image} alt='product' className={styles.cardImage} />
-      <h3>{titleShortner(productData.title)}</h3>
-      <p>{productData.price} $</p>
+      <img
+        src={productData.image_link}
+        alt='product'
+        className={styles.cardImage}
+      />
+      <h3>{productData.title}</h3>
+      <p>{priceDivider(productData.price)} تومان</p>
       <div className={styles.linkContainer}>
-        <Link to={`/products/${productData.id}`}>Details</Link>
         <div className={styles.buttonContainer}>
-          {quantityCount(state, productData.id) === 1 && (
+          {quantityCount(state, productData.product_id) === 1 && (
             <button
               className={styles.smallButton}
               onClick={() =>
@@ -31,7 +34,7 @@ const Product = ({ productData }) => {
               <img src={trashIcon} alt='trash' style={{ width: "15px" }} />
             </button>
           )}
-          {quantityCount(state, productData.id) > 1 && (
+          {quantityCount(state, productData.product_id) > 1 && (
             <button
               className={styles.smallButton}
               onClick={() =>
@@ -40,9 +43,9 @@ const Product = ({ productData }) => {
               -
             </button>
           )}
-          {isInCart(state, productData.id) ? (
+          {isInCart(state, productData.product_id) ? (
             <button
-            className={styles.smallButton}
+              className={styles.smallButton}
               onClick={() =>
                 dispatch({ type: "INCREASE", payload: productData })
               }>
@@ -53,10 +56,11 @@ const Product = ({ productData }) => {
               onClick={() =>
                 dispatch({ type: "ADD_ITEM", payload: productData })
               }>
-              Add To Cart
+              افزودن به سبد خرید
             </button>
           )}
         </div>
+        <Link to={`/products/${productData.product_id}`}>جزئیات</Link>
       </div>
     </div>
   );

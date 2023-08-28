@@ -17,7 +17,7 @@ const sumItems = (items) => {
 const cartReducer = (state, action) => {
   switch (action.type) {
     case "ADD_ITEM":
-      if (!state.selectedItems.find((item) => item.id === action.payload.id)) {
+      if (!state.selectedItems.find((item) => item.product_id === action.payload.product_id)) {
         state.selectedItems.push({
           ...action.payload,
           quantity: 1,
@@ -32,7 +32,7 @@ const cartReducer = (state, action) => {
 
     case "REMOVE_ITEM":
       const newSelectedItems = state.selectedItems.filter((item) => {
-        return item.id !== action.payload.id;
+        return item.product_id !== action.payload.product_id;
       });
       return {
         ...state,
@@ -41,7 +41,7 @@ const cartReducer = (state, action) => {
       };
     case "INCREASE":
       const indexI = state.selectedItems.findIndex(
-        (item) => item.id === action.payload.id
+        (item) => item.product_id === action.payload.product_id
       );
       state.selectedItems[indexI].quantity++;
       return {
@@ -50,7 +50,7 @@ const cartReducer = (state, action) => {
       };
     case "DECREASE":
       const indexD = state.selectedItems.findIndex(
-        (item) => item.id === action.payload.id
+        (item) => item.product_id === action.payload.product_id
       );
       state.selectedItems[indexD].quantity--;
       return {

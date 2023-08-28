@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.container}>
-        <Link className={styles.productLink} to='/products'>Products</Link>
+        <Link className={styles.productLink} to='/products'>محصولات</Link>
         <div className={styles.iconContainer}>
           <Link to="/cart">
             <img src={cartIcon} alt='shop' />
